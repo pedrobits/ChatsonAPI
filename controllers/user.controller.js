@@ -53,7 +53,13 @@ class userController {
 				return res.status(401).json({ error: true, message: 'Credenciais inválidas.' });
 			}
 
-			const token = jwt.sign({ userId: user._id }, process.env.saltPassword, { expiresIn: '1h' });
+			const token = jwt.sign({ 
+				userId: user._id,
+				name: user.name,
+                email: user.email,
+				gender: user.gender,
+				profilePic: user.profilePic
+			 }, process.env.saltPassword, { expiresIn: '1h' });
 
 			return res.status(200).json({ error: false, message: 'Login bem-sucedido.', token });
 		} catch (error) {

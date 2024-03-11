@@ -21,8 +21,12 @@ var userSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
+	profilePic: {
+		type: String,
+		default: 'https://img.freepik.com/free-vector/purple-man-with-blue-hair_24877-82003.jpg',
+	}
 	//creatAt, updateAt
-}, {timestamps: true});
+}, { timestamps: true });
 
 const User = mongoose.model('User', userSchema);
 
